@@ -25,8 +25,9 @@ data <- read.csv (
   fileEncoding = 'UTF-8-BOM'
 )
 
-# before conducting a linear regression it is 
-# important to center and scale your numeric variables
+
+# In regression, it is often recommended to center and scale continuous variables 
+# so that the predictors have a mean of 0 and a standard deviation of 1
 
 data$Classes_Attended <- scale(data$Classes_Attended)
 data$Percent_Grade <- scale(data$Percent_Grade)
