@@ -1,0 +1,64 @@
+##################################################################
+# The purpose of this R script is to demonstrate a T-test 
+# statistical analysis. This was made mostly for my own reference and a way to 
+# practice these functions so it is far from perfect or comprehensive,  
+# but I will share it for others who may find it helpful.
+#
+# Script by: Kim Fake
+#
+#
+###################################################################
+
+# To Clear working environment
+rm(list=ls())
+graphics.off()
+
+# Load libraries
+library(dplyr) # pretty much always load for filtering and manipulating data
+library(lubridate)
+
+
+#load data
+data <- read.csv (
+  './Biology 101 Data CLEAN.csv', 
+  stringsAsFactors = FALSE, 
+  fileEncoding = 'UTF-8-BOM'
+)
+# as you can see, this data is on 3 biology classes
+# we want to use a linear regression to determine if the grades (%) 
+# related to the number of classes student attend during the semester
+
+# change a data type to date
+data$B_Day <- as.Date(data$B_Day, 
+                      format= "%m/%d/%Y"
+)
+
+
+# separate dates into separate month, day, and year columns.
+# note that I find this useful for filtering and 
+# subsetting/filtering data for many purposes
+data <- data %>%
+  dplyr::mutate(Year = lubridate::year(B_Day), 
+                Month = lubridate::month(B_Day), 
+                Day = lubridate::day(B_Day))
+
+# make a new column with age made based on birth year
+data <- data %>%
+  mutate(Age = 2022-Year)
+
+#linear regression model
+# examining the relationship between percent grades 
+# and the number of classes attended in a semester
+# Age is included as a control as we think age may
+# have an effect on the study habitats and grades of students
+model <- lm(
+  Percent_Grade ~ Classes_Attended + Age,
+  data=data
+  )
+summary(model)
+
+# the coefficient in the model for classes attended is positive and significant
+# this indicates that students that attend more classes tend to have higher grades
+
+# the coefficient in the model for age is not significant
+# so student grades did not significant relate to their age
