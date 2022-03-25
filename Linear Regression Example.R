@@ -24,6 +24,13 @@ data <- read.csv (
   stringsAsFactors = FALSE, 
   fileEncoding = 'UTF-8-BOM'
 )
+
+# before conducting a linear regression it is 
+# important to center and scale your numeric variables
+
+data$Classes_Attended <- scale(data$Classes_Attended)
+data$Percent_Grade <- scale(data$Percent_Grade)
+
 # as you can see, this data is on 3 biology classes
 # we want to use a linear regression to determine if the grades (%) 
 # related to the number of classes student attend during the semester
@@ -59,6 +66,9 @@ data <- data %>%
 data <- data %>%
   mutate(Age = 2022-Year)
 
+# we must also scale age
+data$Age <- scale(data$Age)
+
 # linear regression model
 # examining the relationship between percent grades 
 # and the number of classes attended in a semester
@@ -84,6 +94,9 @@ summary(model)
 #load package 
 library(lme4)
 
+# set class as a factor
+data$Class <- as.factor(data$Class)
+
 # Fit a generalized linear mixed-effects models
 # with the added random effects
 model <- lmer(
@@ -95,6 +108,6 @@ summary(model)
 # although this package does not return with an indication of significance
 # using p-values, we can see if the 95% CI of the coefficient over laps with 
 # zero to determine if it is significant
-# 0.4217-0.1129 to 0.4217+0.1129 does not overlap with zero
+# 0.4171-0.1117 to 0.4171+0.1117 does not overlap with zero
 # Therefore there is a significantly positive relationship between
 # the number of classes attended and student grade
