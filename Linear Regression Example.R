@@ -26,7 +26,7 @@ data <- read.csv (
 # related to the number of classes students attend during the semester
 
 # In regression, it is often recommended to center and scale continuous variables 
-# so that the predictors have a mean of 0 and a standard deviation of 1
+# so that the predictors have a mean of 0 and a standard deviation of 1.
 # If you are testing an interaction between a continuous variable and another 
 # variable (continuous or categorical) the continuous variable(s) should be 
 # centered to avoid multicollinearity issues, which could affect model 
@@ -59,7 +59,7 @@ summary(model)
 # For a more detailed explanation of R-squared check out...
 # https://towardsdatascience.com/data-science-explaining-r%C2%B2-in-statistics-6f34e7f0a9bb
 
-# the coefficient in the model for classes attended is positive and significant
+# the coefficient estimate in the model for classes attended is positive and significant
 # this indicates that students that attend more classes tend to have higher grades
 
 # However, we hypothesize Age might have an effect 
@@ -96,10 +96,10 @@ summary(model)
 
 # this model still explains about 21% (0.2102) of the variation in the data
 
-# the coefficient in the model for classes attended is positive and significant
+# the coefficient estimate in the model for classes attended is positive and significant
 # this indicates that students that attend more classes tend to have higher grades
 
-# the coefficient in the model for age is not significant
+# the coefficient estimate in the model for age is not significant
 # so student grades did not significantly relate to their age
 
 # the previous model, however does not consider the non-independence of students
@@ -124,9 +124,9 @@ summary(model)
 
 # although this package does not return with an indication of significance
 # using p-values, we can see if the 95% CI of the coefficient over laps with 
-# zero to determine if it is significant
-# 0.4171-0.1117 to 0.4171+0.1117 does not overlap with zero
-# Therefore there is a significantly positive relationship between
+# zero to determine if it is significant.
+# 0.4171-0.1117 to 0.4171+0.1117 does not overlap with zero,
+# therefore there is a significantly positive relationship between
 # the number of classes attended and student grade
 
 # if you want to see the R squared and p-values though...
