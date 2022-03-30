@@ -44,6 +44,16 @@ model <- lm(
 )
 summary(model)
 
+# R describes the correlation between the observed values of the response variable 
+# and the predicted values of the response variable made by the model. 
+# R-squared describes the proportion of the variance in the response variable that can be 
+# explained by the predictor variables in the regression model.
+
+# As you add predictors to your model, 
+# the multiple R-squared will always increase, as a predictor will always 
+# explain some portion of the variance.
+# Thus the Adjusted R-squared adds penalties for the number of predictors in the model.
+
 # the coefficient in the model for classes attended is positive and significant
 # this indicates that students that attend more classes tend to have higher grades
 
