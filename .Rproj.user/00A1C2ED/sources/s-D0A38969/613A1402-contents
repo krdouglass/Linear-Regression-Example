@@ -9,10 +9,6 @@
 #
 ###################################################################
 
-# To Clear working environment
-rm(list=ls())
-graphics.off()
-
 # Load libraries
 library(dplyr) # pretty much always load for filtering and manipulating data
 library(lubridate)
@@ -28,6 +24,10 @@ data <- read.csv (
 
 # In regression, it is often recommended to center and scale continuous variables 
 # so that the predictors have a mean of 0 and a standard deviation of 1
+# If you are testing an interaction between a continuous variable and another 
+# variable (continuous or categorical) the continuous variable(s) should be 
+# centered to avoid multicollinearity issues, which could affect model 
+# convergence and/or inflate the standard errors.
 
 data$Classes_Attended <- scale(data$Classes_Attended)
 data$Percent_Grade <- scale(data$Percent_Grade)
