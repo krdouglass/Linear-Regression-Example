@@ -54,6 +54,11 @@ summary(model)
 # explain some portion of the variance.
 # Thus the Adjusted R-squared adds penalties for the number of predictors in the model.
 
+# so our model explains about 21% (0.2102) of the variation in the data
+
+# For a more detailed explanation of R-squared check out...
+# https://towardsdatascience.com/data-science-explaining-r%C2%B2-in-statistics-6f34e7f0a9bb
+
 # the coefficient in the model for classes attended is positive and significant
 # this indicates that students that attend more classes tend to have higher grades
 
@@ -89,6 +94,8 @@ model <- lm(
   )
 summary(model)
 
+# this model still explains about 21% (0.2102) of the variation in the data
+
 # the coefficient in the model for classes attended is positive and significant
 # this indicates that students that attend more classes tend to have higher grades
 
@@ -97,7 +104,7 @@ summary(model)
 
 # the previous model, however does not consider the non-independence of students
 # sampled from different biology classes, and as grades may vary between classes due
-# to other factors such as instructors, we will class as a random effect in our model
+# to other factors such as instructors, we will add class as a random effect in our model
 # for this we will need a generalized linear mixed-effects model and so
 # we must load a package with a function that allows for random effects in the model
 
@@ -133,3 +140,6 @@ tab_model(model)
 # Marginal R2 provides the variance explained only by fixed effects
 # and conditional R2 provides the variance explained by the entire model,
 # i.e., both fixed effects and random effects.
+
+# so this model including random effects of class explained 
+# ~41% (0.411) of the variation in the data
