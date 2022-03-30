@@ -21,6 +21,9 @@ data <- read.csv (
   fileEncoding = 'UTF-8-BOM'
 )
 
+# as you can see, this data is on 3 biology classes
+# we want to use a linear regression to determine if the grades (%) 
+# related to the number of classes students attend during the semester
 
 # In regression, it is often recommended to center and scale continuous variables 
 # so that the predictors have a mean of 0 and a standard deviation of 1
@@ -31,10 +34,6 @@ data <- read.csv (
 
 data$Classes_Attended <- scale(data$Classes_Attended)
 data$Percent_Grade <- scale(data$Percent_Grade)
-
-# as you can see, this data is on 3 biology classes
-# we want to use a linear regression to determine if the grades (%) 
-# related to the number of classes student attend during the semester
 
 # linear regression model
 # examining the relationship between percent grades 
@@ -112,3 +111,15 @@ summary(model)
 # 0.4171-0.1117 to 0.4171+0.1117 does not overlap with zero
 # Therefore there is a significantly positive relationship between
 # the number of classes attended and student grade
+
+# if you want to see the R squared and p-values though...
+
+# use this library/package
+library(sjPlot)
+
+# and this awesome summary function
+tab_model(model)
+
+# Marginal R2 provides the variance explained only by fixed effects
+# and conditional R2 provides the variance explained by the entire model,
+# i.e., both fixed effects and random effects.
