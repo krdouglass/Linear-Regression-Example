@@ -9,10 +9,6 @@
 #
 ###################################################################
 
-# To Clear working environment
-rm(list=ls())
-graphics.off()
-
 # Load libraries
 library(dplyr) # pretty much always load for filtering and manipulating data
 library(lubridate)
